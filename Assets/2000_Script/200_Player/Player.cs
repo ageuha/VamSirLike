@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -47,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void PlayerMoveInput()
     {
-        // 키 입력
+        // 키 占쌉뤄옙
         if (Input.GetKey(KeyCode.UpArrow) == true)
         {
             transform.position += (Vector3.up * Time.deltaTime) * MoveSpeed;
@@ -66,33 +64,29 @@ public class Player : MonoBehaviour
         }
     }
 
-    [Button("Add Atk")]
     public void AddAtkReason(AtkReason reason, int value)
     {
         if (AtkReasonDictionary.TryAdd(reason, value) == false)
         {
-            // Dic에 넣는 것에 실패했다 => 이미 해당 Key 값이 존재
             AtkReasonDictionary[reason] = value;
 
         }
 
 #if Log
-        Log.Message(LogType.StatAtk, $"공격력 수치 변화 {value}");
+        Log.Message(LogType.StatAtk, $" {value}");
 #endif
     }
 
-    [Button("Add MoveSpeed")]
     public void AddMoveSpeedReason(MoveSpeedReason reason, int value)
     {
         if (MoveSpeedReasonDictionary.TryAdd(reason, value) == false)
         {
-            // Dic에 넣는 것에 실패했다 => 이미 해당 Key 값이 존재
             MoveSpeedReasonDictionary[reason] = value;
 
         }
 
 #if Log
-        Log.Message(LogType.StatMoveSpeed, $"이동속도 수치 변화 {value}");
+        Log.Message(LogType.StatMoveSpeed, $" {value}");
 #endif
     }
 }
